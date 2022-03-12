@@ -6,8 +6,8 @@
 int main(void)
 {
 		int i, e;
-	        	i = 48;
-			e = 48;
+		i = 48;
+		e = 48;
 			while (e < 58)
 			{
 				i = 48;
