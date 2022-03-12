@@ -13,7 +13,7 @@ int main(void)
 	int len = strlen(hexString);
 	int i = 0;
 
-	for (i = 0; i <= len; i++)
+	for (i = 0; i < len; i++)
 	{
 		putchar(hexString[i]);
 	}
