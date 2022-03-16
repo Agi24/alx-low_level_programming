@@ -2,7 +2,7 @@
 /**
  * prints the alphabet in lowercase.
  */
-void print_alpabet(void)
+void print_alphabet(void)
 {
 	char ch;
 	ch = 'a';
