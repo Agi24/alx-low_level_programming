@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * is_it_prm - returns 1 if n is prime , 0 otherwise
- * @n: the prime or not number 
+ * @n: the prime or not number
  * @i: factor of n
  * Return: return 1 if prime or 0 if not
  */
