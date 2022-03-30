@@ -5,7 +5,7 @@
  * @i: factor of n
  * Return: return 1 if prime or 0 if not
  */
-int _is_it_prm(int i, int n)
+int is_it_prm(int i, int n)
 {
 	if (n < 2)
 		return (0);
