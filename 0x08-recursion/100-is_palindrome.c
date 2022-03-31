@@ -33,8 +33,9 @@ int check_palindrome(int l, int r, char *p)
  * Return: 1 if palindrome, 0 if not
  */
 int is_palindrome(char *s)
+{
 	int i;
 
-	i = _strlen(s) - 1;
+	i = _strlen (s) - 1;
 	return (check_palindrome(0, i, s));
-	}
+}
