@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 /**
- * main - find the smallest number of coins to make an amount of change 
+ * main - find the smallest number of coins to make an amount of change
  * @argc: arg count
  * @argv: contains all arguments
  * Return: 1 on error, 0 for success
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
-	else 
+	else
 	{
 		printf("Error\n");
 		return (1);
