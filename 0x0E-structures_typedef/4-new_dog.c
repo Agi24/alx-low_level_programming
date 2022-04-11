@@ -21,6 +21,8 @@ char *_strdup(char *str)
 		ret[length] = *--str;
 	return (ret);
 }
+
+
 /**
  * new_dog - instantiates a dog.
  * @name: the dog's name.
