@@ -1,101 +1,129 @@
 #include "hash_tables.h"
 
+
+
 /**
- * s_collision - searching collision
- * @ht:		hash table
- * @key:	string key
- * @value:	string value
- * @idx:	index
- * idx:	index
- * Return: O if is is wrong or 1 if ist is success
  *
- */
+ *  * add_n_hash - adds a node at the beginning of a hash at a given index
+ *
+ *   *
+ *
+ *    * @head: head of the hash linked list
+ *
+ *     * @key: key of the hash
+ *
+ *      * @value: value to store
+ *
+ *       * Return: head of the hash
+ *
+ *        */
 
-int s_collision(hash_table_t *ht, char *key, char *value, int idx)
+hash_node_t *add_n_hash(hash_node_t **head, const char *key, const char *value)
+
 {
-	hash_node_t *tmp;
-	tmp = ht->array[idx];
 
-	while (tmp)
-	{
-		if (strcmp(key, tmp->key) == 0)
-		{
-			free(tmp->value);
-			tmp->value = strdup(value);
-			if (tmp->value == NULL)
-				return (1);
-		}
-		tmp = tmp->next;
-	}
-	return (0);
+		hash_node_t *tmp;
+
+
+
+			tmp = *head;
+
+
+
+				while (tmp != NULL)
+
+						{
+
+									if (strcmp(key, tmp->key) == 0)
+
+												{
+
+																free(tmp->value);
+
+																			tmp->value = strdup(value);
+
+																						return (*head);
+
+																								}
+
+											tmp = tmp->next;
+
+												}
+
+
+
+					tmp = malloc(sizeof(hash_node_t));
+
+
+
+						if (tmp == NULL)
+
+									return (NULL);
+
+
+
+							tmp->key = strdup(key);
+
+								tmp->value = strdup(value);
+
+									tmp->next = *head;
+
+										*head = tmp;
+
+
+
+											return (*head);
+
 }
 
-/**
- * new_node - insert node
- * @key:	string key
- * @value:	string value
- * Return: new node
- */
 
-hash_node_t *new_node(const char *key, const char *value)
-{
-	hash_node_t *new;
-	new = (hash_node_t *)malloc(sizeof(hash_node_t))
-	if (new == NULL)
-		return (NULL);
-
-	new->key = strdup(key);
-	if (new->key == NULL)
-		return (NULL);
-
-	new->value = strdup(value);
-	if (new->value == NULL)
-	{
-		free(new->key);
-		return (NULL);
-	}
-	new->next = NULL;
-	return (new);
-}
 
 /**
- * hash_table_set - insert elements to the hash table
- * @ht:	hash table
- * @key:	string key
- * @value:  string value
- * Return:	0 if fail or 1 if success
- */
+ *
+ *  * hash_table_set - adds a hash (key, value) to a given hash table
+ *
+ *   *
+ *
+ *    * @ht: pointer to the hash table
+ *
+ *     * @key: key of the hash
+ *
+ *      * @value: value to store
+ *
+ *       * Return: 1 if successes, 0 if fails
+ *
+ *        */
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+
 {
-	hash_node_t *new, *temp;
-	int idx, n_node;
 
-	if (ht == NULL || key == NULL || value == NULL)
-		return (0);
+		unsigned long int k_index;
 
-	idx = key_index((const unsigned char *)key, ht->size);
 
-	if (ht->array[idx] != NULL)
-	{
-		n_node = s_collision(ht, (char *)key, (char *)value, idx);
-		if (n_node == 1)
-			return (1);
-	}
 
-	new = new_node(key, value);
-	if (new == NULL)
-		return (0);
+			if (ht == NULL)
 
-	if (ht->array[idx] == NULL)
-	{
-		ht->array[idx] = new;
-		return (1);
-	}
+						return (0);
 
-	temp = ht->array[idx];
-	ht->array[idx] = new;
-	new->next = temp;
-	return (1);
+
+
+				if (key == NULL || *key == '\0')
+
+							return (0);
+
+
+
+					k_index = key_index((unsigned char *)key, ht->size);
+
+
+
+						if (add_n_hash(&(ht->array[k_index]), key, value) == NULL)
+
+									return (0);
+
+
+
+							return (1);
 
 }
