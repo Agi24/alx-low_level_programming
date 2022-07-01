@@ -24,7 +24,6 @@ int s_collision(hash_table_t *ht, char *key, char *value, int idx)
 			tmp->value = strdup(value);
 			if (tmp->value == NULL)
 				return (1);
-			return (1);
 		}
 		tmp = tmp->next;
 	}
